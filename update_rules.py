@@ -1,5 +1,6 @@
 import requests
 import os
+from datetime import datetime
 
 # Настройки
 SOURCE_URL = "https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/master/hosts"
@@ -16,21 +17,29 @@ KEYWORDS = [
 
 def main():
     unique_domains = set()
-    result = ["! Сгенерировано автоматически: AI Unlocker", "! Игнорирует 0.0.0.0 (рекламные блокировки)", ""]
+    # Получаем текущую дату и время
+    now = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+    
+    result = [
+        f"! Название: AI Unlocker Rules",
+        f"! Последнее обновление: {now}",
+        f"! Источник: {SOURCE_URL}",
+        f"! Игнорирует 0.0.0.0 (рекламные блокировки)",
+        ""
+    ]
 
-    # 1. Сначала берем домены из твоего личного файла custom_domains.txt
+    # 1. Личный список
     result.append("! --- Личный список (custom_domains.txt) ---")
     if os.path.exists(CUSTOM_FILE):
         with open(CUSTOM_FILE, "r", encoding="utf-8") as f:
             for line in f:
                 domain = line.strip().lower()
-                # Пропускаем комментарии и технический мусор
                 if domain and not domain.startswith(('#', '!', '0.0.0.0')):
                     if domain not in unique_domains:
                         unique_domains.add(domain)
                         result.append(f"||{domain}^$dnsrewrite={PROXY_IP}")
     
-    # 2. Затем добираем из интернета новинки
+    # 2. Интернет-список
     try:
         response = requests.get(SOURCE_URL)
         if response.status_code == 200:
@@ -38,28 +47,23 @@ def main():
             lines = response.text.splitlines()
             for line in lines:
                 line = line.strip().lower()
-                
-                # ГЛАВНОЕ УЛУЧШЕНИЕ: Игнорируем блокировщики (0.0.0.0) и комментарии
                 if not line or line.startswith(('#', '0.0.0.0')):
                     continue
                 
                 parts = line.split()
                 if len(parts) >= 2:
-                    # Домен всегда идет последним словом в строке
                     domain = parts[-1].replace("http://", "").replace("https://", "").split('/')[0]
-                    
-                    # Проверяем по ключевым словам
                     if any(key in domain for key in KEYWORDS):
                         if domain not in unique_domains:
                             unique_domains.add(domain)
                             result.append(f"||{domain}^$dnsrewrite={PROXY_IP}")
     except Exception as e:
-        print(f"Ошибка сети: {e}")
+        print(f"Ошибка: {e}")
 
-    # 3. Сохраняем итоговый файл
+    # 3. Сохранение
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(result))
-    print(f"Успешно! Собрано {len(unique_domains)} доменов.")
+    print(f"Успешно! Обновлено в {now}")
 
 if __name__ == "__main__":
     main()
