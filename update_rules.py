@@ -7,7 +7,7 @@ PROXY_IP = "185.87.51.182"
 CUSTOM_FILE = "custom_domains.txt"
 OUTPUT_FILE = "my_ready_rules.txt"
 
-# Ключевые слова для авто-поиска новых поддоменов
+# Ключевые слова для авто-поиска
 KEYWORDS = [
     "openai", "chatgpt", "oaistatic", "oaiusercontent", "sora.com", 
     "google", "gemini", "googleapis", "withgoogle", "pki.goog", "notebooklm", 
@@ -16,7 +16,7 @@ KEYWORDS = [
 
 def main():
     unique_domains = set()
-    result = ["! Сгенерировано автоматически: AI Unlocker", ""]
+    result = ["! Сгенерировано автоматически: AI Unlocker", "! Игнорирует 0.0.0.0 (рекламные блокировки)", ""]
 
     # 1. Сначала берем домены из твоего личного файла custom_domains.txt
     result.append("! --- Личный список (custom_domains.txt) ---")
@@ -24,12 +24,13 @@ def main():
         with open(CUSTOM_FILE, "r", encoding="utf-8") as f:
             for line in f:
                 domain = line.strip().lower()
-                if domain and not domain.startswith(('#', '!', '185.', '0.')):
+                # Пропускаем комментарии и технический мусор
+                if domain and not domain.startswith(('#', '!', '0.0.0.0')):
                     if domain not in unique_domains:
                         unique_domains.add(domain)
                         result.append(f"||{domain}^$dnsrewrite={PROXY_IP}")
     
-    # 2. Затем добираем из интернета то, чего еще нет в списке
+    # 2. Затем добираем из интернета новинки
     try:
         response = requests.get(SOURCE_URL)
         if response.status_code == 200:
@@ -37,12 +38,17 @@ def main():
             lines = response.text.splitlines()
             for line in lines:
                 line = line.strip().lower()
-                if not line or line.startswith('#'): continue
+                
+                # ГЛАВНОЕ УЛУЧШЕНИЕ: Игнорируем блокировщики (0.0.0.0) и комментарии
+                if not line or line.startswith(('#', '0.0.0.0')):
+                    continue
                 
                 parts = line.split()
                 if len(parts) >= 2:
+                    # Домен всегда идет последним словом в строке
                     domain = parts[-1].replace("http://", "").replace("https://", "").split('/')[0]
                     
+                    # Проверяем по ключевым словам
                     if any(key in domain for key in KEYWORDS):
                         if domain not in unique_domains:
                             unique_domains.add(domain)
