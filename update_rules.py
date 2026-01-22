@@ -4,11 +4,11 @@ from datetime import datetime
 
 # Настройки
 SOURCE_URL = "https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/master/hosts"
-PROXY_IP = "185.87.51.182"
+# PROXY_IP удален, так как мы берем IP из строк
 CUSTOM_FILE = "custom_domains.txt"
 OUTPUT_FILE = "my_ready_rules.txt"
 
-# Ключевые слова для авто-поиска
+# Ключевые слова для авто-поиска в интернет-списке
 KEYWORDS = [
     "openai", "chatgpt", "oaistatic", "oaiusercontent", "sora.com", 
     "google", "gemini", "googleapis", "withgoogle", "pki.goog", "notebooklm", 
@@ -17,27 +17,40 @@ KEYWORDS = [
 
 def main():
     unique_domains = set()
-    # Получаем текущую дату и время
     now = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
     
     result = [
         f"! Название: AI Unlocker Rules",
         f"! Последнее обновление: {now}",
-        f"! Источник: {SOURCE_URL}",
+        f"! Источник: {SOURCE_URL} + {CUSTOM_FILE}",
         f"! Игнорирует 0.0.0.0 (рекламные блокировки)",
         ""
     ]
 
-    # 1. Личный список
+    # 1. Личный список (Теперь ожидается формат: IP DOMAIN)
     result.append("! --- Личный список (custom_domains.txt) ---")
     if os.path.exists(CUSTOM_FILE):
         with open(CUSTOM_FILE, "r", encoding="utf-8") as f:
             for line in f:
-                domain = line.strip().lower()
-                if domain and not domain.startswith(('#', '!', '0.0.0.0')):
+                line = line.strip().lower()
+                # Пропускаем пустые строки и комментарии
+                if not line or line.startswith(('#', '!')):
+                    continue
+
+                parts = line.split()
+                # Проверяем, что в строке есть хотя бы 2 части (IP и Домен)
+                if len(parts) >= 2:
+                    current_ip = parts[0]
+                    domain = parts[-1]
+                    
+                    # Пропускаем, если IP это 0.0.0.0 (обычно это блокировка рекламы)
+                    if current_ip == "0.0.0.0":
+                        continue
+
                     if domain not in unique_domains:
                         unique_domains.add(domain)
-                        result.append(f"||{domain}^$dnsrewrite={PROXY_IP}")
+                        # Используем IP из файла (current_ip), а не общий
+                        result.append(f"||{domain}^$dnsrewrite={current_ip}")
     
     # 2. Интернет-список
     try:
@@ -47,18 +60,28 @@ def main():
             lines = response.text.splitlines()
             for line in lines:
                 line = line.strip().lower()
-                if not line or line.startswith(('#', '0.0.0.0')):
+                if not line or line.startswith('#'):
                     continue
                 
                 parts = line.split()
                 if len(parts) >= 2:
-                    domain = parts[-1].replace("http://", "").replace("https://", "").split('/')[0]
-                    if any(key in domain for key in KEYWORDS):
-                        if domain not in unique_domains:
-                            unique_domains.add(domain)
-                            result.append(f"||{domain}^$dnsrewrite={PROXY_IP}")
+                    current_ip = parts[0] # Берем IP из начала строки
+                    
+                    # Очистка домена от http/https и путей
+                    raw_domain = parts[-1].replace("http://", "").replace("https://", "").split('/')[0]
+                    
+                    # Проверяем, подходит ли домен под наши ключевые слова
+                    if any(key in raw_domain for key in KEYWORDS):
+                        # Важно: Пропускаем, если IP 0.0.0.0, иначе мы заблокируем сервис вместо разблокировки
+                        if current_ip == "0.0.0.0":
+                            continue
+
+                        if raw_domain not in unique_domains:
+                            unique_domains.add(raw_domain)
+                            # Подставляем IP, который был указан в hosts файле
+                            result.append(f"||{raw_domain}^$dnsrewrite={current_ip}")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print(f"Ошибка при загрузке из интернета: {e}")
 
     # 3. Сохранение
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
