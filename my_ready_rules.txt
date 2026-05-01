@@ -1,26 +1,11 @@
 ! Название: AI Unlocker Rules
-! Последнее обновление: 30.04.2026 07:23:41
+! Последнее обновление: 01.05.2026 07:22:02
 ! Источник: https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/master/hosts + custom_domains.txt
 ! Игнорирует 0.0.0.0 (рекламные блокировки)
 
 ! --- Личный список (custom_domains.txt) ---
 
 ! --- Авто-дополнение из интернета ---
-||gemini.google.com^$dnsrewrite=103.27.157.38
-||aistudio.google.com^$dnsrewrite=103.27.157.38
-||generativelanguage.googleapis.com^$dnsrewrite=103.27.157.38
-||aitestkitchen.withgoogle.com^$dnsrewrite=103.27.157.38
-||aisandbox-pa.googleapis.com^$dnsrewrite=103.27.157.38
-||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=103.27.157.38
-||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=103.27.157.38
-||assistant-s3-pa.googleapis.com^$dnsrewrite=103.27.157.38
-||proactivebackend-pa.googleapis.com^$dnsrewrite=103.27.157.38
-||robinfrontend-pa.googleapis.com^$dnsrewrite=95.182.120.241
-||o.pki.goog^$dnsrewrite=103.27.157.38
-||labs.google^$dnsrewrite=103.27.157.38
-||notebooklm.google.com^$dnsrewrite=103.27.157.38
-||jules.google.com^$dnsrewrite=103.27.157.38
-||stitch.withgoogle.com^$dnsrewrite=103.27.157.38
 ||chatgpt.com^$dnsrewrite=77.239.114.0
 ||ab.chatgpt.com^$dnsrewrite=77.239.114.0
 ||auth.openai.com^$dnsrewrite=77.239.114.0
@@ -63,9 +48,24 @@
 ||checkout.www.deepl.com^$dnsrewrite=77.239.114.0
 ||gtm.deepl.com^$dnsrewrite=77.239.114.0
 ||voice-proxy.www.deepl.com^$dnsrewrite=77.239.114.0
-||fitbit-pa.googleapis.com^$dnsrewrite=77.239.114.0
-||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=77.239.114.0
-||fitbit.google.com^$dnsrewrite=77.239.114.0
+||fitbit-pa.googleapis.com^$dnsrewrite=62.133.62.97
+||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=62.133.62.97
+||fitbit.google.com^$dnsrewrite=62.133.62.97
+||gemini.google.com^$dnsrewrite=62.133.62.97
+||aistudio.google.com^$dnsrewrite=62.133.62.97
+||generativelanguage.googleapis.com^$dnsrewrite=62.133.62.97
+||aitestkitchen.withgoogle.com^$dnsrewrite=62.133.62.97
+||aisandbox-pa.googleapis.com^$dnsrewrite=62.133.62.97
+||webchannel-alkalimakersuite-pa.clients6.google.com^$dnsrewrite=62.133.62.97
+||alkalimakersuite-pa.clients6.google.com^$dnsrewrite=62.133.62.97
+||assistant-s3-pa.googleapis.com^$dnsrewrite=62.133.62.97
+||proactivebackend-pa.googleapis.com^$dnsrewrite=62.133.62.97
+||robinfrontend-pa.googleapis.com^$dnsrewrite=62.133.62.97
+||o.pki.goog^$dnsrewrite=62.133.62.97
+||labs.google^$dnsrewrite=62.133.62.97
+||notebooklm.google.com^$dnsrewrite=62.133.62.97
+||jules.google.com^$dnsrewrite=62.133.62.97
+||stitch.withgoogle.com^$dnsrewrite=62.133.62.97
 ||claude.ai^$dnsrewrite=77.239.114.0
 ||console.anthropic.com^$dnsrewrite=77.239.114.0
 ||api.anthropic.com^$dnsrewrite=77.239.114.0
