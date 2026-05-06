@@ -1,5 +1,5 @@
 ! Название: AI Unlocker Rules
-! Последнее обновление: 05.05.2026 07:12:32
+! Последнее обновление: 06.05.2026 07:30:27
 ! Источник: https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/master/hosts + custom_domains.txt
 ! Игнорирует 0.0.0.0 (рекламные блокировки)
 
@@ -22,6 +22,8 @@
 ||sora.com^$dnsrewrite=77.239.114.0
 ||videos.openai.com^$dnsrewrite=77.239.114.0
 ||ios.chat.openai.com^$dnsrewrite=77.239.114.0
+||cdn.platform.openai.com^$dnsrewrite=77.239.114.0
+||developers.openai.com^$dnsrewrite=77.239.114.0
 ||grok.com^$dnsrewrite=77.239.114.0
 ||accounts.x.ai^$dnsrewrite=77.239.114.0
 ||assets.grok.com^$dnsrewrite=77.239.114.0
@@ -69,3 +71,5 @@
 ||claude.ai^$dnsrewrite=77.239.114.0
 ||console.anthropic.com^$dnsrewrite=77.239.114.0
 ||api.anthropic.com^$dnsrewrite=77.239.114.0
+||platform.claude.com^$dnsrewrite=77.239.114.0
+||a.claude.ai^$dnsrewrite=77.239.114.0
