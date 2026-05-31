@@ -1,55 +1,58 @@
 ! Название: AI Unlocker Rules
-! Последнее обновление: 30.05.2026 07:35:13
+! Последнее обновление: 31.05.2026 08:09:00
 ! Источник: https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/master/hosts + custom_domains.txt
 ! Игнорирует 0.0.0.0 (рекламные блокировки)
 
 ! --- Личный список (custom_domains.txt) ---
 
 ! --- Авто-дополнение из интернета ---
-||chatgpt.com^$dnsrewrite=77.239.114.0
-||ab.chatgpt.com^$dnsrewrite=77.239.114.0
-||auth.openai.com^$dnsrewrite=77.239.114.0
-||auth0.openai.com^$dnsrewrite=77.239.114.0
-||platform.openai.com^$dnsrewrite=77.239.114.0
-||cdn.oaistatic.com^$dnsrewrite=77.239.114.0
-||files.oaiusercontent.com^$dnsrewrite=77.239.114.0
-||tcr9i.chat.openai.com^$dnsrewrite=77.239.114.0
-||webrtc.chatgpt.com^$dnsrewrite=77.239.114.0
-||android.chat.openai.com^$dnsrewrite=77.239.114.0
-||api.openai.com^$dnsrewrite=77.239.114.0
-||operator.chatgpt.com^$dnsrewrite=77.239.114.0
-||sora.chatgpt.com^$dnsrewrite=77.239.114.0
-||sora.com^$dnsrewrite=77.239.114.0
-||videos.openai.com^$dnsrewrite=77.239.114.0
-||ios.chat.openai.com^$dnsrewrite=77.239.114.0
-||cdn.platform.openai.com^$dnsrewrite=77.239.114.0
-||developers.openai.com^$dnsrewrite=77.239.114.0
-||grok.com^$dnsrewrite=77.239.114.0
-||accounts.x.ai^$dnsrewrite=77.239.114.0
-||assets.grok.com^$dnsrewrite=77.239.114.0
-||deepl.com^$dnsrewrite=77.239.114.0
-||www.deepl.com^$dnsrewrite=77.239.114.0
-||www2.deepl.com^$dnsrewrite=77.239.114.0
-||login-wall.deepl.com^$dnsrewrite=77.239.114.0
-||w.deepl.com^$dnsrewrite=77.239.114.0
-||s.deepl.com^$dnsrewrite=77.239.114.0
-||dict.deepl.com^$dnsrewrite=77.239.114.0
-||ita-free.www.deepl.com^$dnsrewrite=77.239.114.0
-||write-free.www.deepl.com^$dnsrewrite=77.239.114.0
-||experimentation.deepl.com^$dnsrewrite=77.239.114.0
-||experimentation-grpc.deepl.com^$dnsrewrite=77.239.114.0
-||ita-free.app.deepl.com^$dnsrewrite=77.239.114.0
-||shield.deepl.com^$dnsrewrite=77.239.114.0
-||ott.deepl.com^$dnsrewrite=77.239.114.0
-||api-free.deepl.com^$dnsrewrite=77.239.114.0
-||backend.deepl.com^$dnsrewrite=77.239.114.0
-||clearance.deepl.com^$dnsrewrite=77.239.114.0
-||errortracking.deepl.com^$dnsrewrite=77.239.114.0
-||auth.deepl.com^$dnsrewrite=77.239.114.0
-||oneshot-free.www.deepl.com^$dnsrewrite=77.239.114.0
-||checkout.www.deepl.com^$dnsrewrite=77.239.114.0
-||gtm.deepl.com^$dnsrewrite=77.239.114.0
-||voice-proxy.www.deepl.com^$dnsrewrite=77.239.114.0
+||chatgpt.com^$dnsrewrite=45.155.204.190
+||ab.chatgpt.com^$dnsrewrite=45.155.204.190
+||auth.openai.com^$dnsrewrite=45.155.204.190
+||auth0.openai.com^$dnsrewrite=45.155.204.190
+||platform.openai.com^$dnsrewrite=45.155.204.190
+||cdn.oaistatic.com^$dnsrewrite=45.155.204.190
+||files.oaiusercontent.com^$dnsrewrite=45.155.204.190
+||tcr9i.chat.openai.com^$dnsrewrite=45.155.204.190
+||webrtc.chatgpt.com^$dnsrewrite=45.155.204.190
+||android.chat.openai.com^$dnsrewrite=45.155.204.190
+||api.openai.com^$dnsrewrite=45.155.204.190
+||operator.chatgpt.com^$dnsrewrite=45.155.204.190
+||sora.chatgpt.com^$dnsrewrite=45.155.204.190
+||videos.openai.com^$dnsrewrite=45.155.204.190
+||ios.chat.openai.com^$dnsrewrite=45.155.204.190
+||cdn.platform.openai.com^$dnsrewrite=45.155.204.190
+||developers.openai.com^$dnsrewrite=45.155.204.190
+||sdmntprukwest.oaiusercontent.com^$dnsrewrite=45.155.204.190
+||sdmntpritalynorth.oaiusercontent.com^$dnsrewrite=45.155.204.190
+||sdmntprpolandcentral.oaiusercontent.com^$dnsrewrite=45.155.204.190
+||sdmntprnortheu.oaiusercontent.com^$dnsrewrite=45.155.204.190
+||grok.com^$dnsrewrite=45.155.204.190
+||accounts.x.ai^$dnsrewrite=45.155.204.190
+||assets.grok.com^$dnsrewrite=45.155.204.190
+||deepl.com^$dnsrewrite=45.155.204.190
+||www.deepl.com^$dnsrewrite=45.155.204.190
+||www2.deepl.com^$dnsrewrite=45.155.204.190
+||login-wall.deepl.com^$dnsrewrite=45.155.204.190
+||w.deepl.com^$dnsrewrite=45.155.204.190
+||s.deepl.com^$dnsrewrite=45.155.204.190
+||dict.deepl.com^$dnsrewrite=45.155.204.190
+||ita-free.www.deepl.com^$dnsrewrite=45.155.204.190
+||write-free.www.deepl.com^$dnsrewrite=45.155.204.190
+||experimentation.deepl.com^$dnsrewrite=45.155.204.190
+||experimentation-grpc.deepl.com^$dnsrewrite=45.155.204.190
+||ita-free.app.deepl.com^$dnsrewrite=45.155.204.190
+||shield.deepl.com^$dnsrewrite=45.155.204.190
+||ott.deepl.com^$dnsrewrite=45.155.204.190
+||api-free.deepl.com^$dnsrewrite=45.155.204.190
+||backend.deepl.com^$dnsrewrite=45.155.204.190
+||clearance.deepl.com^$dnsrewrite=45.155.204.190
+||errortracking.deepl.com^$dnsrewrite=45.155.204.190
+||auth.deepl.com^$dnsrewrite=45.155.204.190
+||oneshot-free.www.deepl.com^$dnsrewrite=45.155.204.190
+||checkout.www.deepl.com^$dnsrewrite=45.155.204.190
+||gtm.deepl.com^$dnsrewrite=45.155.204.190
+||voice-proxy.www.deepl.com^$dnsrewrite=45.155.204.190
 ||fitbit-pa.googleapis.com^$dnsrewrite=62.133.62.97
 ||fitbitvestibuleshim-pa.googleapis.com^$dnsrewrite=62.133.62.97
 ||fitbit.google.com^$dnsrewrite=62.133.62.97
@@ -68,8 +71,8 @@
 ||notebooklm.google.com^$dnsrewrite=62.133.62.97
 ||jules.google.com^$dnsrewrite=62.133.62.97
 ||stitch.withgoogle.com^$dnsrewrite=62.133.62.97
-||claude.ai^$dnsrewrite=77.239.114.0
-||console.anthropic.com^$dnsrewrite=77.239.114.0
-||api.anthropic.com^$dnsrewrite=77.239.114.0
-||platform.claude.com^$dnsrewrite=77.239.114.0
-||a.claude.ai^$dnsrewrite=77.239.114.0
+||claude.ai^$dnsrewrite=45.155.204.190
+||console.anthropic.com^$dnsrewrite=45.155.204.190
+||api.anthropic.com^$dnsrewrite=45.155.204.190
+||platform.claude.com^$dnsrewrite=45.155.204.190
+||a.claude.ai^$dnsrewrite=45.155.204.190
