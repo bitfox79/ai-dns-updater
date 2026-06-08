@@ -1,5 +1,5 @@
 ! Название: AI Unlocker Rules
-! Последнее обновление: 07.06.2026 08:18:09
+! Последнее обновление: 08.06.2026 09:17:28
 ! Источник: https://raw.githubusercontent.com/ImMALWARE/dns.malw.link/master/hosts + custom_domains.txt
 ! Игнорирует 0.0.0.0 (рекламные блокировки)
 
